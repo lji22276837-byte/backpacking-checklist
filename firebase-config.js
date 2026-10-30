@@ -1,4 +1,3 @@
-
 export const firebaseConfig = {
   apiKey: "AIzaSyDZD7Q3m-6XtsibPyzgBYKw29QIhVbKKds",
   authDomain: "backpacking-checklist.firebaseapp.com",
