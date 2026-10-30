@@ -19,26 +19,29 @@ service cloud.firestore {
         && resource.data.ownerUid == request.auth.uid
         && request.query.limit <= 30;
       allow create: if request.auth != null
-        && request.resource.data.keys().hasOnly(['ownerUid','editorUids','groups','items','createdAt'])
+        && request.resource.data.keys().hasOnly(['ownerUid','editorUids','groups','items','trips','createdAt'])
         && request.resource.data.ownerUid == request.auth.uid
         && request.resource.data.editorUids == []
         && request.resource.data.groups is list
-        && request.resource.data.items is list;
+        && request.resource.data.items is list
+        && request.resource.data.trips is list;
       allow update: if request.auth != null && (
         // 소유자는 편집자 목록, 장비 목록, 그룹을 수정할 수 있습니다.
         (resource.data.ownerUid == request.auth.uid
           && request.resource.data.ownerUid == resource.data.ownerUid
           && request.resource.data.createdAt == resource.data.createdAt
-          && request.resource.data.keys().hasOnly(['ownerUid','editorUids','groups','items','createdAt'])
+          && request.resource.data.keys().hasOnly(['ownerUid','editorUids','groups','items','trips','createdAt'])
           && request.resource.data.editorUids is list
           && request.resource.data.groups is list
-          && request.resource.data.items is list)
+          && request.resource.data.items is list
+          && request.resource.data.trips is list)
         ||
         // 편집자는 장비와 그룹만 수정할 수 있습니다. 권한을 바꾸지 못합니다.
         (request.auth.uid in resource.data.editorUids
-          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['items','groups'])
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['items','groups','trips'])
           && request.resource.data.groups is list
-          && request.resource.data.items is list)
+          && request.resource.data.items is list
+          && request.resource.data.trips is list)
       );
       allow delete: if request.auth != null && resource.data.ownerUid == request.auth.uid;
     }
