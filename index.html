@@ -291,7 +291,28 @@ body{background:var(--bg);color:var(--fg)}.panel,details{background:var(--panel)
 #gearPage.v31-ready .v31-left #categories .item .specs{gap:7px!important}
 #gearPage.v31-ready .v31-right .v31-summary #weightTotal{text-align:center}
 }
-</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.2</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
+
+/* V3.4: one compact sidebar menu; only donut and prepared weight remain visible */
+#gearPage.v31-ready .v31-right{gap:10px}
+#gearPage.v31-ready .v31-right .v31-summary #progress,
+#gearPage.v31-ready .v31-right .v31-summary .bar{display:none!important}
+#gearPage.v31-ready .v31-right .v31-summary #weightTotal{font-size:15px!important;text-align:center;margin:4px 0 0!important;color:var(--text,#ebf2ec)}
+#gearPage.v31-ready .v31-right .v31-summary .v33-donut-wrap{margin:4px auto 9px}
+#gearPage.v31-ready .v31-right>.v34-menu{order:1;margin:0!important;min-width:0;overflow:hidden;border:1px solid var(--edge,#314438);border-radius:12px;background:var(--panel,#15241b)}
+#gearPage.v31-ready .v31-right>.v34-menu>summary{font-size:14px;font-weight:750;cursor:pointer;list-style:none;padding:14px 15px;display:flex;align-items:center;justify-content:space-between}
+#gearPage.v31-ready .v31-right>.v34-menu>summary::-webkit-details-marker{display:none}
+#gearPage.v31-ready .v31-right>.v34-menu>summary::after{content:'⌄';color:var(--muted,#9bab9d)}
+#gearPage.v31-ready .v31-right>.v34-menu[open]>summary::after{content:'⌃'}
+#gearPage.v31-ready .v34-menu-body{padding:0 9px 11px;display:flex;flex-direction:column;gap:9px;min-width:0}
+#gearPage.v31-ready .v34-menu-body>.v291-more,#gearPage.v31-ready .v34-menu-body>.v291-utility,#gearPage.v31-ready .v34-menu-body>.v31-recommend{margin:0!important;width:100%;max-width:100%;box-sizing:border-box}
+#gearPage.v31-ready .v34-menu-body>.v291-more,#gearPage.v31-ready .v34-menu-body>.v31-recommend{padding:10px 12px;border:1px solid var(--edge,#314438);border-radius:9px;background:var(--panel2,#1b2921)}
+#gearPage.v31-ready .v34-menu-body>.v291-more>summary,#gearPage.v31-ready .v34-menu-body>.v31-recommend>summary{font-size:12px;line-height:1.5;cursor:pointer}
+#gearPage.v31-ready .v34-menu-body .v291-tools-body{padding:7px 3px}
+#gearPage.v31-ready .v34-menu-body .panel{max-width:100%;box-sizing:border-box}
+#gearPage.v31-ready .v34-menu-body #offlineStatus{font-size:11px;margin:3px 2px 0}
+@media(max-width:650px){#gearPage.v31-ready .v31-right .v31-summary #weightTotal{font-size:14px!important}}
+
+</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.4</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
 <div class="cloud-head"><div><h2>☁️ 클라우드 동기화</h2><div id="cloudSummary" class="muted">연결 상태 확인 중…</div></div><span id="cloudBadge" class="cloud-pill">확인 중</span></div>
 <div id="cloudSetup" class="cloudmsg cloud-setup">설정 확인 중…</div>
 <div id="cloudStatus" class="cloudmsg cloud-status" role="status" aria-live="polite"></div>
@@ -378,7 +399,7 @@ $('renameTrip').onclick=()=>{const t=selectedTrip();if(!t)return;const name=prom
 $('deleteTrip').onclick=()=>{const t=selectedTrip();if(!t||!confirm(`'${t.name}' 장비 구성을 삭제할까요? 기본 장비 목록은 유지됩니다.`))return;trips=trips.filter(x=>x!==t);selectedTripId='';localStorage.removeItem('backpacking_active_trip_v24');persistTrips();save();render();renderTrips()};
 function persistTrips(){if(window.cloudMode==='cloud')return;try{localStorage.setItem(TRIP_KEY,JSON.stringify(trips))}catch{}}
 let openIds=new Set(),dragId=null;
-function render(){const eligible=packCount(),n=eligible.filter(isPacked).length;$('progress').textContent=`${n} / ${eligible.length}개 준비 완료 (${eligible.length?Math.round(n/eligible.length*100):0}%)`;$('fill').style.width=(eligible.length?n/eligible.length*100:0)+'%';$('weightTotal').textContent='체크한 장비 무게: '+(eligible.filter(isPacked).reduce((a,x)=>a+(Math.max(0,Number(x.weightG)||0)*Math.max(1,Number(x.qty)||1)),0)/1000).toFixed(2)+' kg (입력된 무게 기준)';const query=$('search').value.toLowerCase().trim(),filter=$('filter').value;document.querySelectorAll('details[data-group]').forEach(d=>{if(d.open)openIds.add(d.dataset.group);else openIds.delete(d.dataset.group)});
+function render(){const eligible=packCount(),n=eligible.filter(isPacked).length;$('progress').textContent=`${n} / ${eligible.length}개 준비 완료 (${eligible.length?Math.round(n/eligible.length*100):0}%)`;$('fill').style.width=(eligible.length?n/eligible.length*100:0)+'%';$('weightTotal').textContent='준비 무게: '+(eligible.filter(isPacked).reduce((a,x)=>a+(Math.max(0,Number(x.weightG)||0)*Math.max(1,Number(x.qty)||1)),0)/1000).toFixed(2)+' kg';const query=$('search').value.toLowerCase().trim(),filter=$('filter').value;document.querySelectorAll('details[data-group]').forEach(d=>{if(d.open)openIds.add(d.dataset.group);else openIds.delete(d.dataset.group)});
 $('categories').innerHTML=groups.map((g,i)=>{const group=items.filter(x=>x.groupId===g.id&&tripIncluded(x)),visible=group.filter(x=>(!query||(x.name+' '+x.desc+' '+x.memo).toLowerCase().includes(query))&&(filter==='all'||(filter==='unchecked'?!isPacked(x):filter==='checked'?isPacked(x):x.priority===filter)));if(!visible.length&&(query||filter!=='all'))return '';return `<details data-group="${esc(g.id)}" ${openIds.has(g.id)||query?'open':''}><summary><span>${String(i+1).padStart(2,'0')}. ${esc(g.name)}</span><span class="cat-actions"><button type="button" class="drag-handle" draggable="true" data-drag="${esc(g.id)}" title="드래그하여 순서 변경" aria-label="순서 드래그">↕</button><button type="button" data-move="up" data-group-id="${esc(g.id)}" ${i===0?'disabled':''} aria-label="위로 이동">↑</button><button type="button" data-move="down" data-group-id="${esc(g.id)}" ${i===groups.length-1?'disabled':''} aria-label="아래로 이동">↓</button><button type="button" data-cat-edit="${esc(g.id)}">제목 수정</button><button type="button" class="danger" data-cat-delete="${esc(g.id)}">삭제</button></span><small>${group.filter(isPacked).length}/${group.length}개 완료</small></summary><div class="items">${visible.map(x=>`<div class="item ${isPacked(x)?'done':''}"><input type="checkbox" data-id="${esc(x.id)}" ${isPacked(x)?'checked':''} aria-label="${esc(x.name)} 준비 완료"><div class="info"><div class="name">${esc(x.name)}</div><div class="desc">${esc(x.desc)}</div><div class="specs"><label><input type="number" inputmode="decimal" min="0" max="999999" step="0.1" data-weight="${esc(x.id)}" value="${Number(x.weightG)||0}" aria-label="${esc(x.name)} 개당 무게(g)"> g</label><label>수량 <input type="number" inputmode="numeric" min="1" max="999" step="1" data-qty="${esc(x.id)}" value="${Math.max(1,Number(x.qty)||1)}" aria-label="${esc(x.name)} 수량"></label><button type="button" class="tiny" data-note-toggle="${esc(x.id)}">메모</button></div><div class="note-wrap ${x.memo?'':'hidden'}" data-note-wrap="${esc(x.id)}"><input class="memo-input" type="text" data-memo="${esc(x.id)}" value="${esc(x.memo)}" placeholder="브랜드·모델·메모" aria-label="${esc(x.name)} 메모"></div></div><span class="tag">${esc(x.priority)}</span><label class="v30-status">상태 <select data-gear-status="${esc(x.id)}" aria-label="${esc(x.name)} 보유 상태">${[['owned','보유 중'],['planned','구매 예정'],['repair','수리 필요'],['borrow','대여 예정']].map(([val,label])=>`<option value="${val}" ${(x.gearStatus||'owned')===val?'selected':''}>${label}</option>`).join('')}</select></label><button class="tiny" data-edit="${esc(x.id)}">수정</button><button class="tiny danger" data-delete="${esc(x.id)}">×</button></div>`).join('')||'<p class="muted">등록된 장비가 없습니다.</p>'}</div></details>`}).join('');const selected=$('newCategory').value;$('newCategory').innerHTML=groups.map((g,i)=>`<option value="${esc(g.id)}">${String(i+1).padStart(2,'0')}. ${esc(g.name)}</option>`).join('');if(groups.some(g=>g.id===selected))$('newCategory').value=selected;$('add').disabled=!groups.length;}
 function reorder(from,to){if(from===to)return;const a=groups.findIndex(g=>g.id===from),b=groups.findIndex(g=>g.id===to);if(a<0||b<0)return;const [moving]=groups.splice(a,1);groups.splice(b,0,moving);save();render()}
 $('categories').addEventListener('toggle',e=>{const d=e.target;if(d.matches?.('details[data-group]')){if(d.open)openIds.add(d.dataset.group);else openIds.delete(d.dataset.group)}},true);
@@ -650,6 +671,26 @@ if(sharedId)openBoard(sharedId);else syncUi();
    target.scrollIntoView({behavior:'smooth',block:'nearest'});
   },true);
  });
+})();
+</script>
+<script>
+/* V3.4: move existing tools without cloning nodes, preserving event listeners. */
+(function(){
+ const sidebar=document.querySelector('#gearPage.v31-ready .v31-right');
+ const card=sidebar?.querySelector('.v31-summary');
+ if(!sidebar||!card)return;
+ const menu=document.createElement('details');menu.className='v34-menu';menu.id='sidebarMenu';
+ const head=document.createElement('summary');head.textContent='☰ 메뉴';menu.appendChild(head);
+ const body=document.createElement('div');body.className='v34-menu-body';menu.appendChild(body);
+ const tools=card.querySelector('details.v291-more');if(tools)body.appendChild(tools);
+ const help=card.querySelector('details.v291-more');if(help)body.appendChild(help);
+ const offline=card.querySelector('#offlineStatus');if(offline)body.appendChild(offline);
+ const rec=sidebar.querySelector(':scope > .v31-recommend');if(rec)body.appendChild(rec);
+ const upgrade=[...sidebar.children].find(x=>x.classList.contains('v31-recommend')&&x.querySelector('#v30UpdatePanel'));
+ if(upgrade)body.appendChild(upgrade);
+ const utility=sidebar.querySelector(':scope > #utilityMenu');
+ if(utility){utility.querySelector(':scope > summary').textContent='클라우드 · 계정 · 대분류 관리';body.appendChild(utility)}
+ card.after(menu);
 })();
 </script>
 </body></html>
