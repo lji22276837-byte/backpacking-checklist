@@ -129,7 +129,50 @@ body{background:var(--bg);color:var(--fg)}.panel,details{background:var(--panel)
 .v30-status select{min-height:0!important;font-size:12px;padding:3px 5px;max-width:120px}
 @media(min-width:1050px){#gearPage{max-width:1100px!important}.wrap{max-width:1190px!important}#categories .items .item{display:grid;grid-template-columns:24px minmax(0,1fr) auto auto auto;align-items:center;gap:8px}#categories .info{min-width:0}#categories .memo-input{max-width:480px}#categories .specs{gap:7px!important}}
 @media(max-width:650px){.v30-panel{padding:10px}.v30-status{margin-top:5px}.v30-status select{font-size:12px}.v30-action-row button{flex:1 1 140px}#categories .item{gap:6px!important}}
-</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 패킹 체크리스트 V3.0</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
+
+/* V3.1 layout layer. Existing input and cloud bindings stay on original DOM nodes. */
+#gearPage.v31-ready{max-width:1440px!important;margin:0 auto!important}
+.wrap:has(#gearPage.v31-ready){max-width:1500px!important}
+.v31-heading{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:4px 0 14px}
+.v31-heading h1{margin:0;font-size:24px;letter-spacing:-.045em}
+.v31-heading .v31-kicker{font-size:10px;letter-spacing:.16em;font-weight:750;color:var(--accent);margin-bottom:4px}
+.v31-heading p{margin:5px 0 0;font-size:12px}
+.v31-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-bottom:12px}
+.v31-top>.panel{margin:0!important;box-shadow:none!important}
+.v31-top .trip-panel .toolbar{gap:6px!important}
+.v31-top .trip-panel .toolbar>strong{min-width:0}
+.v31-top .v31-search-panel .toolbar{height:100%}
+.v31-top .v31-search-panel #search{flex:1;min-width:120px}
+.v31-columns{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(295px,.95fr);gap:17px;align-items:start}
+.v31-left,.v31-right{min-width:0}
+.v31-right{display:grid;gap:12px;position:sticky;top:75px;max-height:calc(100vh - 88px);overflow:auto;scrollbar-width:thin}
+.v31-right>.panel,.v31-right>.v291-utility,.v31-right>.v30-panel{margin:0!important}
+.v31-right .v31-summary{padding:17px!important}
+.v31-right .v31-summary #progress{display:block;font-size:16px;margin:0 0 12px}
+.v31-right .v31-summary .bar{height:9px;border-radius:100px}
+.v31-right .v31-summary #weightTotal{font-weight:750;font-size:16px;margin:12px 0 4px}
+.v31-right .v31-summary #offlineStatus{font-size:11px;margin:8px 0 0}
+.v31-right .v31-summary .v291-more{margin:10px 0 0}
+.v31-right .v291-utility>summary{font-size:13px;padding:12px 13px}
+.v31-right .v291-tools-body{padding:7px}
+.v31-right .v291-quick-add{width:100%;margin:0!important}
+.v31-recommend{padding:15px;border:1px solid var(--edge);background:var(--panel);border-radius:12px}
+.v31-recommend summary{cursor:pointer;list-style:none;font-weight:750;font-size:14px}
+.v31-recommend summary::-webkit-details-marker{display:none}
+.v31-recommend p{color:var(--muted);font-size:11px;margin:6px 0 10px}
+.v31-rec-row{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--edge);padding:8px 0;font-size:12px}
+.v31-rec-row:last-child{border:0}
+.v31-rec-row button{width:30px;height:30px;min-height:30px;flex:none;padding:3px;font-weight:800}
+.v31-left #categories details{margin:0 0 10px!important}
+.v31-left #categories .item{padding:8px 10px!important}
+.v31-left #categories .item .specs{min-width:0}
+.v31-footer{font-size:11px;color:var(--muted);margin:15px 0 25px}
+.v31-right .v30-panel h3{font-size:13px}
+.v31-right .v30-panel .v30-action-row{display:flex;flex-wrap:wrap;gap:6px}
+.v31-right .v30-panel button{font-size:11px;padding:7px 8px}
+@media(max-width:950px){.v31-top{grid-template-columns:1fr}.v31-columns{grid-template-columns:minmax(0,1fr)}.v31-right{position:static;max-height:none;overflow:visible;order:0}.v31-left{order:1}.v31-recommend:not([open]) .v31-rec-row{display:none}.v31-heading h1{font-size:21px}.v31-right .v31-summary{padding:12px!important}.v31-right .v31-summary #progress{font-size:14px;margin-bottom:8px}.v31-right .v31-summary #weightTotal{font-size:13px;margin:8px 0 0}}
+@media(max-width:650px){.v31-heading{margin:10px 0 11px}.v31-heading p{display:none}.v31-top{gap:7px}.v31-columns{gap:8px}.v31-right{gap:7px}.v31-left #categories .item{padding:7px!important}.v31-recommend{padding:11px}.v31-right .v291-utility>summary{padding:10px}.v31-heading h1{font-size:19px}.v31-recommend:not([open]){padding:10px 12px}}
+</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.1</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
 <div class="cloud-head"><div><h2>☁️ 클라우드 동기화</h2><div id="cloudSummary" class="muted">연결 상태 확인 중…</div></div><span id="cloudBadge" class="cloud-pill">확인 중</span></div>
 <div id="cloudSetup" class="cloudmsg cloud-setup">설정 확인 중…</div>
 <div id="cloudStatus" class="cloudmsg cloud-status" role="status" aria-live="polite"></div>
@@ -409,5 +452,29 @@ if(sharedId)openBoard(sharedId);else syncUi();
  if('serviceWorker' in navigator && location.protocol==='https:'){
    navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(()=>{if(label)label.textContent='오프라인 사용 준비 완료 · 홈 화면에 추가할 수 있어요';}).catch(()=>{if(label)label.textContent='오프라인 준비 실패 · 인터넷 연결에서 새로고침해 주세요';});
  } else if(location.protocol==='file:'){if(label)label.textContent='파일 미리보기에서는 버튼이 작동하지 않을 수 있습니다. HTTPS 사이트에 배포해 Safari에서 실행하세요.';}
+})();
+</script><script>
+(function(){
+ const gear=document.getElementById('gearPage'); if(!gear||gear.classList.contains('v31-ready'))return;
+ const make=(tag,cls)=>{let e=document.createElement(tag);e.className=cls;return e};
+ const heading=make('header','v31-heading');const headingText=make('div','');const title=gear.querySelector(':scope > h1'),tagline=gear.querySelector(':scope > p');
+ const kicker=make('div','v31-kicker');kicker.textContent='BACKPACKING · GEAR MANAGEMENT';headingText.append(kicker);
+ if(title)headingText.append(title);if(tagline)headingText.append(tagline);heading.append(headingText);
+ const top=make('div','v31-top'),cols=make('div','v31-columns'),left=make('div','v31-left'),right=make('aside','v31-right');right.setAttribute('aria-label','준비 현황 및 관리');
+ const trip=gear.querySelector('.trip-panel');if(trip)top.append(trip);
+ const search=document.getElementById('search');const searchPanel=search?.closest('section.panel');if(searchPanel){searchPanel.classList.add('v31-search-panel');top.append(searchPanel)}
+ const cats=document.getElementById('categories');if(cats)left.append(cats);
+ const progress=document.getElementById('progress');const summary=progress?.closest('section.panel');if(summary){summary.classList.add('v31-summary');right.append(summary)}
+ const rec=make('details','v31-recommend');const recSummary=document.createElement('summary');recSummary.textContent='✦ 추천 보완 장비 · 펼치기';rec.append(recSummary);
+ const caption=document.createElement('p');caption.textContent='필요할 때만 직접 추가할 수 있어요. 기존 장비는 변경되지 않습니다.';rec.append(caption);
+ for(const [name,category] of [['방수 장갑','의류'],['전해질 보충제','식량'],['비상 연락처 카드','안전'],['여벌 기능성 양말','의류'],['전자기기 방수 파우치','수납']]){
+ const row=make('div','v31-rec-row');const label=document.createElement('span');label.textContent=name;const button=document.createElement('button');button.type='button';button.textContent='+';button.title=name+' 입력하기';button.setAttribute('aria-label',name+' 장비 추가 양식 열기');
+ button.addEventListener('click',()=>{const menu=document.getElementById('utilityMenu'),form=document.getElementById('addEquipment'),field=document.getElementById('newName'),sel=document.getElementById('newCategory');if(!menu||!form||!field)return;menu.open=true;field.value=name;if(sel){const candidate=[...sel.options].find(o=>o.textContent.includes(category));if(candidate)sel.value=candidate.value}form.scrollIntoView({behavior:'smooth',block:'center'});field.focus({preventScroll:true})});row.append(label,button);rec.append(row);
+ }right.append(rec);
+ const quick=gear.querySelector('.v291-quick-add');if(quick)right.append(quick);
+ const menu=document.getElementById('utilityMenu');if(menu)right.append(menu);
+ const v30=document.getElementById('v30UpdatePanel');if(v30){const details=make('details','v31-recommend');const summaryEl=document.createElement('summary');summaryEl.textContent='장비 목록 V3.0 업데이트 도구';details.append(summaryEl,v30);right.append(details)}
+ const footer=gear.querySelector(':scope > p.footer');const info=make('p','v31-footer');info.textContent='클라우드 동기화와 장비 데이터는 기존 방식 그대로 유지됩니다. 복원이나 대규모 수정 전에는 JSON 백업을 저장하세요.';
+ cols.append(left,right);gear.prepend(heading,top,cols);if(footer)gear.append(footer);gear.append(info);gear.classList.add('v31-ready');
 })();
 </script></body></html>
