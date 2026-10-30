@@ -172,7 +172,80 @@ body{background:var(--bg);color:var(--fg)}.panel,details{background:var(--panel)
 .v31-right .v30-panel button{font-size:11px;padding:7px 8px}
 @media(max-width:950px){.v31-top{grid-template-columns:1fr}.v31-columns{grid-template-columns:minmax(0,1fr)}.v31-right{position:static;max-height:none;overflow:visible;order:0}.v31-left{order:1}.v31-recommend:not([open]) .v31-rec-row{display:none}.v31-heading h1{font-size:21px}.v31-right .v31-summary{padding:12px!important}.v31-right .v31-summary #progress{font-size:14px;margin-bottom:8px}.v31-right .v31-summary #weightTotal{font-size:13px;margin:8px 0 0}}
 @media(max-width:650px){.v31-heading{margin:10px 0 11px}.v31-heading p{display:none}.v31-top{gap:7px}.v31-columns{gap:8px}.v31-right{gap:7px}.v31-left #categories .item{padding:7px!important}.v31-recommend{padding:11px}.v31-right .v291-utility>summary{padding:10px}.v31-heading h1{font-size:19px}.v31-recommend:not([open]){padding:10px 12px}}
-</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.1</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
+
+/* V3.2 refined desktop dashboard + predictable mobile gear rows */
+#gearPage.v31-ready .v31-columns{grid-template-columns:minmax(0,2.12fr) minmax(290px,.87fr);gap:14px}
+#gearPage.v31-ready .v31-left #categories details[data-group]{border-radius:12px;margin-bottom:10px!important;box-shadow:none}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary{background:linear-gradient(95deg,var(--panel2),var(--panel));padding:11px 13px;line-height:1.35}
+#gearPage.v31-ready .v31-left #categories .items{padding:3px 10px 8px}
+#gearPage.v31-ready .v31-left #categories .item{min-width:0}
+#gearPage.v31-ready .v31-left #categories .info{min-width:0}
+#gearPage.v31-ready .v31-left #categories .name{line-height:1.3}
+#gearPage.v31-ready .v31-left #categories .desc{line-height:1.35;margin-top:3px;overflow-wrap:anywhere}
+#gearPage.v31-ready .v31-left #categories .specs{display:flex;align-items:center;gap:8px;min-width:0}
+#gearPage.v31-ready .v31-left #categories .specs label{white-space:nowrap}
+#gearPage.v31-ready .v31-left #categories .memo-input{width:100%;max-width:100%;min-width:0}
+#gearPage.v31-ready .v30-status{flex:none;margin:0;white-space:nowrap}
+#gearPage.v31-ready .v30-status select{max-width:112px}
+#gearPage.v31-ready .v31-right .v31-summary{border-radius:12px}
+@media(min-width:951px){
+ #gearPage.v31-ready .v31-left #categories .items .item{display:grid!important;grid-template-columns:24px minmax(0,1fr) 122px 36px 29px;gap:8px!important;align-items:center}
+ #gearPage.v31-ready .v31-left #categories .item>.tag{display:none}
+ #gearPage.v31-ready .v31-left #categories .item>.v30-status{font-size:0}
+ #gearPage.v31-ready .v31-left #categories .item>.v30-status select{font-size:12px;width:100%;max-width:122px}
+ #gearPage.v31-ready .v31-left #categories .item>[data-edit]{font-size:12px;padding:5px 2px;min-height:30px}
+ #gearPage.v31-ready .v31-left #categories .item>[data-delete]{font-size:19px;padding:4px 2px;min-height:30px}
+ #gearPage.v31-ready .v31-left #categories .info{display:grid;grid-template-columns:minmax(120px,.9fr) minmax(150px,1.3fr);column-gap:10px;align-items:center}
+ #gearPage.v31-ready .v31-left #categories .info>.name{grid-column:1;grid-row:1}
+ #gearPage.v31-ready .v31-left #categories .info>.desc{grid-column:1;grid-row:2}
+ #gearPage.v31-ready .v31-left #categories .info>.specs{grid-column:2;grid-row:1/3;margin:0;gap:5px;flex-wrap:wrap}
+ #gearPage.v31-ready .v31-left #categories .info>.note-wrap{grid-column:1/-1}
+ #gearPage.v31-ready .v31-left #categories .specs input{width:65px;padding:6px!important;font-size:13px!important}
+ #gearPage.v31-ready .v31-left #categories .specs label:nth-child(2) input{width:45px}
+ #gearPage.v31-ready .v31-left #categories .specs .tiny{padding:5px;font-size:12px}
+}
+@media(max-width:950px){
+ #gearPage.v31-ready .v31-columns{grid-template-columns:1fr;gap:8px}
+ #gearPage.v31-ready .v31-left{order:1}
+ #gearPage.v31-ready .v31-right{order:0;display:flex;flex-direction:column}
+ #gearPage.v31-ready .v31-right .v31-summary{order:-3}
+ #gearPage.v31-ready .v31-right .v31-quick-add{order:-2}
+ #gearPage.v31-ready .v31-right .v291-utility{order:3}
+ #gearPage.v31-ready .v31-right .v31-recommend{order:2}
+}
+@media(max-width:650px){
+ #gearPage.v31-ready .v31-heading h1{font-size:18px;letter-spacing:-.04em}
+ #gearPage.v31-ready .v31-top>.panel{padding:10px!important}
+ #gearPage.v31-ready .v31-left #categories details[data-group]>summary{padding:10px 11px!important;font-size:13px}
+ #gearPage.v31-ready .v31-left #categories .items{padding:3px 9px 8px}
+ #gearPage.v31-ready .v31-left #categories .items .item{display:grid!important;grid-template-columns:25px minmax(0,1fr) 41px 30px;grid-template-rows:auto auto;gap:6px 7px!important;padding:11px 2px!important;align-items:start}
+ #gearPage.v31-ready .v31-left #categories .item>input[type=checkbox]{grid-column:1;grid-row:1;align-self:start;margin:3px 0;width:22px;height:22px}
+ #gearPage.v31-ready .v31-left #categories .item>.info{grid-column:2/-1;grid-row:1;display:block;min-width:0;width:100%}
+ #gearPage.v31-ready .v31-left #categories .item>.tag{display:none}
+ #gearPage.v31-ready .v31-left #categories .name{font-size:14px;font-weight:750;line-height:1.4;overflow-wrap:anywhere}
+ #gearPage.v31-ready .v31-left #categories .desc{font-size:11px;line-height:1.45;margin-top:2px}
+ #gearPage.v31-ready .v31-left #categories .specs{margin-top:9px!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:6px!important;align-items:end}
+ #gearPage.v31-ready .v31-left #categories .specs label{display:flex;min-width:0;align-items:center;gap:4px;font-size:11px;white-space:nowrap}
+ #gearPage.v31-ready .v31-left #categories .specs label:first-child:before{content:'무게';font-size:11px;color:var(--muted)}
+ #gearPage.v31-ready .v31-left #categories .specs input,#gearPage.v31-ready .v31-left #categories .specs label:nth-child(2) input{width:100%!important;max-width:75px;min-width:38px;height:34px;font-size:16px!important;padding:4px 5px!important}
+ #gearPage.v31-ready .v31-left #categories .specs .tiny{font-size:11px!important;min-width:44px!important;min-height:34px!important;padding:5px!important}
+ #gearPage.v31-ready .v31-left #categories .note-wrap{margin-top:7px}
+ #gearPage.v31-ready .v31-left #categories .memo-input{max-width:100%;width:100%;font-size:16px!important;min-height:40px;margin-top:0}
+ #gearPage.v31-ready .v31-left #categories .item>.v30-status{grid-column:2;grid-row:2;justify-self:start;align-self:center;font-size:11px;display:flex;align-items:center;gap:6px;margin:0}
+ #gearPage.v31-ready .v31-left #categories .item>.v30-status select{height:34px;min-height:34px!important;width:112px;max-width:112px;font-size:12px!important;padding:4px 6px}
+ #gearPage.v31-ready .v31-left #categories .item>[data-edit]{grid-column:3;grid-row:2;min-width:40px!important;width:40px;min-height:34px!important;padding:4px!important;font-size:11px!important}
+ #gearPage.v31-ready .v31-left #categories .item>[data-delete]{grid-column:4;grid-row:2;min-width:30px!important;width:30px;min-height:34px!important;padding:3px!important;font-size:17px!important}
+ #gearPage.v31-ready .v31-left #categories .item .v30-status{min-width:0}
+ #gearPage.v31-ready .v31-left #categories .cat-actions{gap:2px}
+ #gearPage.v31-ready .v31-left #categories .cat-actions button{font-size:10px;padding:4px!important;min-height:30px!important;min-width:28px!important}
+ #gearPage.v31-ready .v31-right .v31-summary{padding:12px!important}
+}
+@media(max-width:360px){
+ #gearPage.v31-ready .v31-left #categories .specs{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px}
+ #gearPage.v31-ready .v31-left #categories .specs .tiny{grid-column:1/-1;justify-self:start}
+ #gearPage.v31-ready .v31-left #categories .items .item{grid-template-columns:24px minmax(0,1fr) 38px 29px;column-gap:5px!important}
+}
+</style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.2</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
 <div class="cloud-head"><div><h2>☁️ 클라우드 동기화</h2><div id="cloudSummary" class="muted">연결 상태 확인 중…</div></div><span id="cloudBadge" class="cloud-pill">확인 중</span></div>
 <div id="cloudSetup" class="cloudmsg cloud-setup">설정 확인 중…</div>
 <div id="cloudStatus" class="cloudmsg cloud-status" role="status" aria-live="polite"></div>
