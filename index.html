@@ -245,6 +245,52 @@ body{background:var(--bg);color:var(--fg)}.panel,details{background:var(--panel)
  #gearPage.v31-ready .v31-left #categories .specs .tiny{grid-column:1/-1;justify-self:start}
  #gearPage.v31-ready .v31-left #categories .items .item{grid-template-columns:24px minmax(0,1fr) 38px 29px;column-gap:5px!important}
 }
+
+/* V3.3: left dashboard + wide equipment table, consistent mobile cards */
+#gearPage.v31-ready .v31-columns{grid-template-columns:minmax(245px, .48fr) minmax(0, 1.52fr)!important;gap:16px;align-items:start}
+#gearPage.v31-ready .v31-left{grid-column:2;grid-row:1;min-width:0}
+#gearPage.v31-ready .v31-right{grid-column:1;grid-row:1;position:sticky;top:65px;max-height:calc(100vh - 80px);overflow:auto;display:flex;flex-direction:column;gap:11px}
+#gearPage.v31-ready .v31-right .v31-summary{order:-10;padding:16px!important}
+#gearPage.v31-ready .v31-right .v291-utility{order:1}
+#gearPage.v31-ready .v31-right .v31-recommend{order:2}
+#gearPage.v31-ready .v31-right .v291-quick-add{display:none!important}
+#gearPage.v31-ready .v31-right .v31-summary #progress{text-align:center;font-size:13px;margin:10px 0 5px}
+#gearPage.v31-ready .v31-right .v31-summary .bar{display:none}
+.v33-donut-wrap{display:flex;align-items:center;justify-content:center;gap:14px;margin:8px auto 15px;flex-wrap:wrap}
+.v33-donut{--pct:0%;height:150px;width:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#60d29a var(--pct),#35413c var(--pct) 100%);flex:none}
+.v33-donut-inner{height:116px;width:116px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--panel,#13221a);color:var(--text,#e9eee9)}
+.v33-donut-inner strong{font-size:29px;font-weight:800;line-height:1}.v33-donut-inner small{font-size:11px;color:var(--muted);margin-top:6px}
+.v33-donut-legend{display:flex;flex-direction:column;gap:8px;font-size:12px;color:var(--muted)}.v33-donut-legend b{color:var(--text,#e9eee9)}
+.v33-inline-add{display:flex;gap:7px;align-items:center;flex-wrap:wrap;padding:12px;background:var(--panel2,#192922);border-top:1px solid var(--edge,#314438)}
+.v33-inline-add input{min-width:100px;flex:1 1 180px!important;height:38px;font-size:15px!important}
+.v33-inline-add select{flex:0 0 90px;max-width:110px;height:38px;font-size:13px!important;padding:5px}
+.v33-inline-add button{height:38px;padding:6px 11px;white-space:nowrap}
+.v33-inline-add[hidden]{display:none!important}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary .v33-add-trigger{font-size:12px!important;min-height:30px!important;padding:5px 9px!important;background:#2b6547!important;color:white!important;border:1px solid #347d55!important;border-radius:7px!important;white-space:nowrap}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary .cat-actions{align-items:center}
+#gearPage.v31-ready .v31-left #categories .item .name{font-size:13px}#gearPage.v31-ready .v31-left #categories .item .desc{font-size:11px}
+@media(min-width:951px){#gearPage.v31-ready .v31-left #categories .items .item{grid-template-columns:24px minmax(0,1fr) 108px 34px 22px!important;gap:7px!important}
+#gearPage.v31-ready .v31-left #categories .info{grid-template-columns:minmax(110px,.95fr) minmax(135px,1.15fr)}
+#gearPage.v31-ready .v31-left #categories .v30-status select{max-width:108px!important;font-size:11px!important}}
+@media(max-width:950px){#gearPage.v31-ready .v31-columns{display:flex!important;flex-direction:column;gap:9px}
+#gearPage.v31-ready .v31-left,#gearPage.v31-ready .v31-right{width:100%;grid-column:auto;grid-row:auto}
+#gearPage.v31-ready .v31-left{order:1}#gearPage.v31-ready .v31-right{order:0;position:static;max-height:none;overflow:visible}
+.v33-donut{width:112px;height:112px}.v33-donut-inner{width:86px;height:86px}.v33-donut-inner strong{font-size:23px}
+.v33-donut-wrap{gap:16px;justify-content:space-evenly;margin:7px auto 9px}
+#gearPage.v31-ready .v31-right .v31-summary{order:-10}}
+@media(max-width:650px){#gearPage.v31-ready .v31-left #categories details[data-group]>summary{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:5px!important}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary>span:first-child{font-size:13px;line-height:1.4}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary .cat-actions{grid-column:2;grid-row:1;gap:2px!important}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary small{grid-column:1/-1;grid-row:2;padding:0!important}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary .cat-actions button:not(.v33-add-trigger){font-size:10px;padding:3px!important;min-width:25px;min-height:29px}
+#gearPage.v31-ready .v31-left #categories details[data-group]>summary .v33-add-trigger{padding:5px 7px!important;font-size:11px!important}
+.v33-inline-add{padding:10px 7px}.v33-inline-add input{flex-basis:100%!important}.v33-inline-add select{flex:1}.v33-inline-add button{flex:1}
+#gearPage.v31-ready .v31-left #categories .items .item{font-size:12px!important}
+#gearPage.v31-ready .v31-left #categories .name{font-size:14px!important}
+#gearPage.v31-ready .v31-left #categories .desc{font-size:11px!important}
+#gearPage.v31-ready .v31-left #categories .item .specs{gap:7px!important}
+#gearPage.v31-ready .v31-right .v31-summary #weightTotal{text-align:center}
+}
 </style></head><body><main class="wrap"><nav class="app-nav" aria-label="페이지 전환"><button id="navGear" class="nav-tab selected" type="button">▤ 장비 관리</button><button id="navSites" class="nav-tab" type="button">⌖ 박지 기록</button><button id="themeToggle" type="button" aria-label="테마 전환">☼</button></nav><div id="gearPage"><h1>🎒 백패킹 체크리스트 V3.2</h1><p>대분류 편집 · 개인 오프라인 체크리스트 · 기기 동기화 · 친구와 공유</p><section class="panel cloud-panel" id="cloudPanel">
 <div class="cloud-head"><div><h2>☁️ 클라우드 동기화</h2><div id="cloudSummary" class="muted">연결 상태 확인 중…</div></div><span id="cloudBadge" class="cloud-pill">확인 중</span></div>
 <div id="cloudSetup" class="cloudmsg cloud-setup">설정 확인 중…</div>
@@ -550,4 +596,60 @@ if(sharedId)openBoard(sharedId);else syncUi();
  const footer=gear.querySelector(':scope > p.footer');const info=make('p','v31-footer');info.textContent='클라우드 동기화와 장비 데이터는 기존 방식 그대로 유지됩니다. 복원이나 대규모 수정 전에는 JSON 백업을 저장하세요.';
  cols.append(left,right);gear.prepend(heading,top,cols);if(footer)gear.append(footer);gear.append(info);gear.classList.add('v31-ready');
 })();
-</script></body></html>
+</script>
+<script>
+/* V3.3 overlay: no changes to underlying saved items, groups, Firestore, or existing add handler. */
+(function(){
+ const gear=document.getElementById('gearPage'), list=document.getElementById('categories');
+ if(!gear||!list)return;
+ const sidebar=gear.querySelector('.v31-right'), summary=sidebar?.querySelector('.v31-summary');
+ if(summary){
+   const block=document.createElement('div');block.className='v33-donut-wrap';
+   block.innerHTML='<div class="v33-donut" role="img" aria-label="준비 완료 비율"><div class="v33-donut-inner"><strong id="v33Percent">0%</strong><small>준비 완료</small></div></div><div class="v33-donut-legend"><div>● 준비 완료 <b id="v33Done">0</b>개</div><div>○ 미준비 <b id="v33Remaining">0</b>개</div><div>총 장비 <b id="v33All">0</b>개</div></div>';
+   summary.insertBefore(block,summary.querySelector('#progress'));
+   const progress=summary.querySelector('#progress');
+   function update(){const match=progress?.textContent?.match(/(\d+)\s*\/\s*(\d+)/);if(!match)return;const done=Number(match[1]),total=Number(match[2]),percent=total?Math.round(done/total*100):0;block.querySelector('.v33-donut').style.setProperty('--pct',percent+'%');block.querySelector('#v33Percent').textContent=percent+'%';block.querySelector('#v33Done').textContent=done;block.querySelector('#v33Remaining').textContent=Math.max(0,total-done);block.querySelector('#v33All').textContent=total;}
+   new MutationObserver(update).observe(progress,{childList:true,characterData:true,subtree:true});update();
+ }
+ const quick=sidebar?.querySelector('.v31-quick-add');if(quick)quick.remove();
+ const oldForm=document.getElementById('addEquipment');if(oldForm)oldForm.classList.add('hidden');
+ let updating=false;
+ function enhance(){if(updating)return;updating=true;
+  for(const detail of list.querySelectorAll('details[data-group]')){
+    if(detail.querySelector('.v33-add-trigger'))continue;
+    const actions=detail.querySelector(':scope > summary .cat-actions');if(!actions)continue;
+    const id=detail.dataset.group;
+    const button=document.createElement('button');button.type='button';button.className='v33-add-trigger';button.textContent='+ 장비';button.setAttribute('aria-label','이 대분류에 장비 추가');
+    const form=document.createElement('div');form.className='v33-inline-add';form.hidden=true;
+    const name=document.createElement('input');name.type='text';name.placeholder='추가할 장비 이름';name.setAttribute('aria-label','추가할 장비 이름');
+    const priority=document.createElement('select');priority.setAttribute('aria-label','우선순위');for(const p of ['필수','상황별','선택']){const o=document.createElement('option');o.textContent=p;priority.add(o)}
+    const submit=document.createElement('button');submit.type='button';submit.className='primary';submit.textContent='추가';
+    const cancel=document.createElement('button');cancel.type='button';cancel.textContent='취소';
+    form.append(name,priority,submit,cancel);
+    button.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();detail.open=true;form.hidden=!form.hidden;if(!form.hidden)name.focus()});
+    cancel.addEventListener('click',()=>{form.hidden=true;name.value=''});
+    submit.addEventListener('click',()=>{const text=name.value.trim();if(!text)return name.focus();
+     const category=document.getElementById('newCategory'),field=document.getElementById('newName'),level=document.getElementById('newPriority'),add=document.getElementById('add');
+     if(!category||!field||!level||!add)return;
+     category.value=id;field.value=text;level.value=priority.value;add.click();
+    });
+    name.addEventListener('keydown',e=>{if(e.key==='Enter')submit.click()});
+    actions.prepend(button);detail.insertBefore(form,detail.querySelector('.items'));
+  }
+  updating=false;
+ }
+ // Existing render() fully replaces category nodes, so decorate each newly rendered list.
+ const observer=new MutationObserver(mutations=>{if(mutations.some(m=>[...m.addedNodes].some(n=>n.nodeType===1&&n.matches?.('details[data-group]'))))enhance()});
+ observer.observe(list,{childList:true});enhance();
+ // Recommended items open category-local entry form instead of obsolete sidebar form.
+ sidebar?.querySelectorAll('.v31-rec-row button').forEach(button=>{
+  button.addEventListener('click',e=>{e.stopImmediatePropagation();const label=button.parentElement.querySelector('span')?.textContent||'';
+   const keyword=label.includes('양말')||label.includes('장갑')?'의류':label.includes('전해질')?'식량':label.includes('연락처')?'안전':'수납';
+   const target=[...list.querySelectorAll('details[data-group]')].find(d=>d.querySelector('summary>span')?.textContent.includes(keyword))||list.querySelector('details[data-group]');
+   if(!target)return;target.querySelector('.v33-add-trigger')?.click();const input=target.querySelector('.v33-inline-add input');if(input){input.value=label;input.focus()}
+   target.scrollIntoView({behavior:'smooth',block:'nearest'});
+  },true);
+ });
+})();
+</script>
+</body></html>
