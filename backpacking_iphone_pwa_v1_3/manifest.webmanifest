@@ -1,0 +1,25 @@
+{
+  "name": "백패킹 장비 체크리스트",
+  "short_name": "백패킹 체크",
+  "description": "백패킹 장비를 분류하고 체크·메모·백업하는 오프라인 체크리스트",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f3",
+  "theme_color": "#22533a",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
